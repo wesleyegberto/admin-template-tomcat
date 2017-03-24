@@ -92,7 +92,7 @@
 		<!-- 
 			Tomcat 8.5.4:
 			http://stackoverflow.com/a/39286497/2956677
-			https://github.com/omnifaces/omnifaces/issues/243
+			https://github.com/omnifaces/omnifaces/issues/2431
 		-->
 		<dependency>
 			<groupId>org.omnifaces</groupId>
@@ -102,9 +102,24 @@
 	</dependencies>
 	<build>
 		<finalName>jsf-admin-template-tomcat</finalName>
+		<plugins>
+		   <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${build.sourceDirectory}</directory>
+                            <targetPath>sources</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+	  </plugins>
 	</build>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
 </project>
